@@ -6,12 +6,19 @@ import { postGem } from "../actions";
 import { Link } from "react-router-dom";
 
 const FormContainer = styled.div`
+
   max-width: 400px;
   min-width: 400px;
   max-height: 87.5vh;
   background-color: #30364a;
   border-left: 3px solid black;
   overflow-y: auto;
+  @media(max-width:700px){
+    width:100vw;
+    position:absolute;
+    background-color: #30364a;
+    border-left: none;
+    z-index: 25;
 `;
 
 const Form = styled.form`

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Link} from "react-router-dom"
 import styled from 'styled-components'
 import '../Logo.css'
@@ -10,7 +10,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 height: 100px;
-@media(max-width: 1035px){
+@media(max-width: 1190px){
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -65,9 +65,10 @@ height: 100px;
     -webkit-transition: opacity .55s ease-in-out;
     color: white;
   }
-  }` 
+  }
+  `
 const ButonContainer = styled.div`
-@media(max-width: 700px){
+@media(max-width: 900px){
   height:300px;
   display: flex;
   flex-direction: column;
@@ -82,28 +83,46 @@ const ButonContainer = styled.div`
 `
 
 function NavBar (props) {
+  const logOut = (e) => {
+		e.preventDefault();
+		console.log("LOGGING OUT");
 
+		localStorage.removeItem("token");
+		window.location.reload('/');
+  };
+  
+  let navLinks;
+  if(localStorage.getItem('token')){
+    navLinks=(
+      <ButonContainer>
+           <a className='button' href='/Map'>Map</a>
+           <a className='button' href='/UserDash'>Dashboard</a>
+           <a className='button' href='/CreateGem'>Create a Gem</a>
+           <a className='button' href='/ViewGem' >View Gems</a>
+           <a onClick={logOut} className='button' href='/'>Log Out</a>
+      </ButonContainer>
+    )
+  }else{
+    navLinks=(
+      <ButonContainer>
+        <a className='button' href='/Map'>Map</a>
+        <Link className='button' to='/Register'>Register</Link>
+        <Link className='button' to='/Login'>Log In</Link>
+        <a className='button' href='/ViewGem'>View Gems</a>
+      </ButonContainer>
+    )
+  }
   return (
     <Nav>
       {/* <Router> */}
       <div>
-      <a href='/' className="sign">
+      <Link to='/' className="sign">
         <span className="fast-flicker">g</span><span>eos</span><span className="flicker">e</span><span>ek</span>
-      </a>
+      </Link>
       </div>
-      <ButonContainer>
-        <Link className='button' to='/Register'>Register</Link>
-        <Link className='button' to='/UserDash'>Dashboard</Link>
-        <Link className='button' to='/Login'>Log In</Link>
-        <Link className='button' to='/CreateGem'>Create a Gem</Link>
-        <Link className='button' to='/ViewGem'>View Gems</Link>
+      {navLinks}
+      </Nav>
         
-      </ButonContainer>
-
-      {/* <Route path = '/CreateGem' component = {CreateGem}/>
-    <button onClick= {toggleGem}>View Gems</button>
-    </Router> */}
-    </Nav>
   );
-}
+};
 export default NavBar;
