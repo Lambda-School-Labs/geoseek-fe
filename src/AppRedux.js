@@ -7,8 +7,8 @@ import Register from './components/register'
 import Login from './components/Login'
 import UserDashboard from './components/dashboard'
 import styled from 'styled-components'
-import RegisterImg from './images/RegisterImg.jpg'
-import {Route, Switch} from 'react-router-dom'
+
+import {Route} from 'react-router-dom'
 import ProtetedRoute from './utils/protectedRoute';
 
 

@@ -61,40 +61,6 @@ const Button = styled.button`
     background-color: #c66db2;
   }
 `;
-const ButtonContainer = styled.button`
-  background-color: #30364a;
-  border: 1px solid #30364a;
-  width: 99%;
-  display: flex;
-  justify-content: center;
-`;
-
-const CoordButton = styled.button`
-  width: 230px;
-  height: 50px;
-  border-radius: 15px;
-  outline: none;
-  background-color: #c66db2;
-  border: none;
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  margin: 20px 0px 35px 0px;
-  transition: 0.3s;
-  text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.55s ease-in-out;
-  -moz-transition: opacity 0.55s ease-in-out;
-  -webkit-transition: opacity 0.55s ease-in-out;
-  :hover {
-    opacity: 1;
-    transition: opacity 0.55s ease-in-out;
-    -moz-transition: opacity 0.55s ease-in-out;
-    -webkit-transition: opacity 0.55s ease-in-out;
-    background-color: #ff69b4;
-    border: 2px solid black;
-  }
-`;
 
 const Label = styled.label`
   margin-left: 10%;
@@ -122,7 +88,7 @@ const CloseButtonDiv = styled.div`
   }
 `;
 
-/////////////////////////////////////////////////////
+////////////////////// start of createGem ///////////////////////////////
 
 function CreateGem(props) {
   const userID = localStorage.getItem("userID");
@@ -150,7 +116,9 @@ function CreateGem(props) {
     });
     console.log(newGem, "newGem");
   };
+
   // Enables geocode on submit
+  
   const handleGeocodeSubmit = e => {
     e.preventDefault();
     if (address === "") {
@@ -183,9 +151,11 @@ function CreateGem(props) {
     setTimeout(() => {
       props.setRefresh(!props.refresh);
       props.updatePosition(Number(newGem.latitude), Number(newGem.longitude));
-      props.history.push("/");
+      props.history.push("/Map");
     }, 1000);
   };
+
+//this is for map render control
 
   useEffect(() => {
     props.setRegLogRendered(false);
@@ -195,7 +165,7 @@ function CreateGem(props) {
     <FormContainer>
       <Form onSubmit={handleSubmit}>
         <CloseButtonDiv>
-          <Link className="X_Link" to="/">
+          <Link className="X_Link" to="/Map">
             X
           </Link>
         </CloseButtonDiv>
@@ -209,6 +179,7 @@ function CreateGem(props) {
         />
 
         {/* <GeocodingRedux/> */}
+
         <Label>ADDRESS</Label>
         <Input
           name="address"

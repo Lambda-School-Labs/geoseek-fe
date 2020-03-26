@@ -7,13 +7,11 @@ import {Link} from 'react-router-dom'
 
 
 const FormContainer = styled.div`
-
 display: flex;
 width: 99.5vw;
 height: 87%;
 background-color: #30364A;
 overflow-y: auto;
-
   .Link {
     text-decoration: none;
     outline: none;
@@ -40,7 +38,6 @@ const Button = styled.button`
    transition: opacity .55s ease-in-out;
    -moz-transition: opacity .55s ease-in-out;
    -webkit-transition: opacity .55s ease-in-out;
-
   :hover {
     opacity: 1;
     transition: opacity 0.55s ease-in-out;
@@ -92,10 +89,10 @@ border-left: 3px solid black;
     .Form_Link {
         color: #FF69B4;  
     }
-
     .error {
-      color: red;
+      color: whitesmoke;
       margin: 0;
+      font-size: 12px;
       text-align: center;
     }
     @media(max-width: 700px){
@@ -105,14 +102,12 @@ border-left: 3px solid black;
 const CloseButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
-
   .X_Link {
     color: #FF69B4;
     text-decoration: none;
     font-size: 30px;
     padding: 5px;
     margin: 5px 8px 0px 0px; 
-
     :hover {
       opacity: 1;
       transition: opacity 0.55s ease-in-out;
@@ -170,7 +165,7 @@ function Register (props) {
       <Form onSubmit={handleSubmit(onRegisterSubmit)}
       noValidate
       >
-        <CloseButtonDiv><Link className='X_Link' to='/'>X</Link></CloseButtonDiv>
+        <CloseButtonDiv><Link className='X_Link' to='/Map'>X</Link></CloseButtonDiv>
         <h1>Sign Up</h1>
         <Label>USERNAME</Label>
         <Input
@@ -180,7 +175,7 @@ function Register (props) {
           onChange={handleChange}
           ref={register({required: true, minLength: 4, maxLength: 20})} 
         />
-        {errors.username && <p className='error' >❌ Your username is less than 4 characters ❗️</p>}
+        {errors.username && <p className='error' > It must be a minimum of 4 characters </p>}
         <Label>EMAIL</Label>
         <Input
           name='email'
@@ -191,7 +186,7 @@ function Register (props) {
           ref={register({required: true, pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, minLength: 4, maxLength: 30
           })}
         />
-        {errors.email && <p className='error' >❌ Must be a valid Email ❗️</p>}
+        {errors.email && <p className='error' > Email must be valid </p>}
         <Label>PASSWORD</Label>
         <Input
           name='password'
@@ -201,7 +196,7 @@ function Register (props) {
           onChange={handleChange} 
           ref={register({required: true, minLength: 4, maxLength: 20})} 
         />
-        {errors.password && <p className='error' >❌ Your password is less than 4 characters ❗️</p>}
+        {errors.password && <p className='error' > It must be a minimum of 4 characters </p>}
         <Button type='submit'>Register</Button>
         <p>Already have an account? <Link className='Form_Link' to='/Login'>Sign In</Link></p>
        

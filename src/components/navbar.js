@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import styled from 'styled-components'
 import '../Logo.css'
-import LogOut from './LogOut'
 
 const Nav = styled.div`
 border-bottom: 3px solid black;
@@ -98,11 +97,7 @@ function NavBar (props) {
         <Link className='button' to='/Login'>Log In</Link>
         <Link className='button' to='/CreateGem'>Create a Gem</Link>
         <Link className='button' to='/ViewGem'>View Gems</Link>
-        <>
-        {localStorage.getItem("token") && (
-        <LogOut />
-        )}
-        </>
+        
       </ButonContainer>
 
       {/* <Route path = '/CreateGem' component = {CreateGem}/>

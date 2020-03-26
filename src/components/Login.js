@@ -10,7 +10,6 @@ const FormContainer = styled.div`
   height: 88vh;
   background-color: #30364a;
   overflow-y: auto;
-
   .Link {
     text-decoration: none;
     outline: none;
@@ -35,7 +34,6 @@ const Button = styled.button`
   transition: opacity 0.55s ease-in-out;
   -moz-transition: opacity 0.55s ease-in-out;
   -webkit-transition: opacity 0.55s ease-in-out;
-
   :hover {
     opacity: 1;
     transition: opacity 0.55s ease-in-out;
@@ -44,6 +42,7 @@ const Button = styled.button`
     background-color: #c66db2;
   }
 `;
+
 const Label = styled.label`
   margin-left: 10%;
   color: white;
@@ -63,6 +62,7 @@ const Input = styled.input`
   outline: none;
   color: white;
 `;
+
 const RegisterDiv = styled.div`
     width: 100vw;
     height: 85vh;
@@ -87,6 +87,11 @@ height:85vh;
     .Form_Link {
         color: #FF69B4;
     }
+    .error {
+      color: red;
+      margin: 0;
+      text-align: center;
+    }
     @media(max-width: 700px){
       border-left: none;
     }
@@ -94,14 +99,12 @@ height:85vh;
 const CloseButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
-
   .X_Link {
     color: #FF69B4;
     text-decoration: none;
     font-size: 30px;
     padding: 5px;
     margin: 5px 8px 0px 0px; 
-
     :hover {
       opacity: 1;
       transition: opacity 0.55s ease-in-out;
@@ -126,19 +129,21 @@ function Login (props) {
       .then(res => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userID", res.data.user_id);
-        props.history.push("/");
+        props.history.push("/Map");
+        props.setRegLogRendered(true)
+        
       })
      
       .catch(err => {
 
-        alert(`${err} Invalid username or password`);
+        alert(`${err} you have entered username or password incorrectly.`);
 
       });
   };
 
-  useEffect(() => {
-    props.setRegLogRendered(true);
-  }, []);
+  // useEffect(() => {
+  //   props.setRegLogRendered(true);
+  // }, []);
 
   function handleChange(e) {
     setForm({
@@ -160,7 +165,7 @@ function Login (props) {
       </RegisterDiv>
 
       <Form onSubmit={handleSubmit(onLoginSubmit)}>
-        <CloseButtonDiv><Link className='X_Link' to='/'>X</Link></CloseButtonDiv>
+        <CloseButtonDiv><Link className='X_Link' to='/Map'>X</Link></CloseButtonDiv>
         <h1>Sign in</h1>
         <Label>USERNAME</Label>
         <Input
@@ -170,7 +175,7 @@ function Login (props) {
           ref={register({ required: true, minLength: 4, maxLength: 20 })}
         />
         {errors.username && (
-          <p className="error">❌ It must be a valid username ❗️</p>
+          <p className="error"> the username or password cannot be found </p>
         )}
         <Label>Password:</Label>
         <Input
@@ -182,7 +187,7 @@ function Login (props) {
         />
 
         {errors.password && (
-          <p className="error">❌ It must be a valid password ❗️</p>
+          <p className="error"> the username or password cannot be found </p>
         )}
         <Button type="submit">Log in</Button>
         <p>
