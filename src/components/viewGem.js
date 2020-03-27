@@ -41,18 +41,6 @@ import styled from "styled-components";
   } 
   `;
 
-  const Card2 = styled.div`
-border: 2px solid teal;
-display: flex;
-justify-content: space-evenly;
-flex-wrap: wrap;
-width: 350px;
-padding: 0px;
-max-height: 100%;
-min-height: 100vh;
-height: 100vh;
-overflow-y: auto;
-`
 const CardsContainer = styled.div`
 border-left: 3px solid black;
 margin-left: auto;
@@ -76,97 +64,6 @@ z-index: 25;
   }
     }
 `
-/*const GemCardsList = styled.div`
-    margin: 20px;
-    padding: 5px;
-    border-radius: 10px;
-    display: flex;
-    width: 250px;
-    justify-content: space-evenly;
-  `;
-  const ButtonContainer = styled.div`
-  width: 200px;
- height:150px;
-  display: flex;
-  width: 250px;
-  justify-content: space-between;
-  .button {
-    margin: 0px 3px;
-    width: 75px;
-    height: 25px;
-    border-radius: 5px;
-    background-color: #ff69b4;
-    border: none;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    transition: 0.3s;
-    text-decoration: none;
-    cursor: pointer;
-    padding: 5px;
-    // opacity: 0.6;
-    // transition: opacity .55s ease-in-out;
-    // -moz-transition: opacity .55s ease-in-out;
-    // -webkit-transition: opacity .55s ease-in-out;
-
-    :hover {
-      opacity: 1;
-      transition: opacity 0.55s ease-in-out;
-      -moz-transition: opacity 0.55s ease-in-out;
-      -webkit-transition: opacity 0.55s ease-in-out;
-      background-color: #c66db2;
-      //border: 2px solid black;
-    }
-  }
-`;
-
-const Card2 = styled.div`
-  border: 2px solid teal;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 350px;
-  padding: 0px;
-  max-height: 100%;
-  min-height: 100vh;
-  height: 100vh;
-  overflow-y: auto;
-`;
-const CardsContainer = styled.div`
-  border-left: 3px solid black;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 400px;
-  padding: 0px;
-  max-height: 100%;
-  min-height: 100vh;
-  height: 100vh;
-  overflow-y: auto;
-  @media (max-width: 700px) {
-    width: 100%;
-    position: absolute;
-    background-color: #30364a;
-    border-left: none;
-    z-index: 25;
-    .mapbox-ctrl-logo {
-      display: none;
-    }
-  }
-`;
-
- /* const Container = styled.div`
-    border-left: 3px solid black;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 400px;
-    padding: 0px;
-    max-height: 100%;
-    height: 800px;
-    overflow-y: auto;
-  `;
-*/
 
 const ButtonContainer = styled.div`
 width: 200px;
@@ -239,7 +136,6 @@ const CloseButtonDiv = styled.div`
      }
    }
 `
-//{updatePosition, setRegLogRendered}
 
 export default function ViewGem (props) {
     const [gems, setGems] = useState([])
